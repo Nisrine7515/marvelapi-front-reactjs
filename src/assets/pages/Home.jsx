@@ -12,15 +12,16 @@ const Home = () => {
   const [page, setPage] = useState(1);
   const navigate = useNavigate();
 
-  // ⬇️ récupère favoris
+  // récupère favoris
   const { toggleFavorite, isFavorite } = useFavorites();
 
   useEffect(() => {
     async function fetchCharacters() {
       try {
         const response = await axios.get(`${API_URL}/characters`, {
-          params: { page, limit: 20 }, // 20 ⇒ 2 slides de 10 avec ton carrousel
+          params: { page, limit: 20 }, // 20 ⇒ 2 slides de 10
         });
+        // met à jour le state avec les résultats reçus
         setCharacters(response.data.results || []);
       } catch (error) {
         console.error("Erreur :", error);
@@ -44,7 +45,6 @@ const Home = () => {
         <button onClick={handleNext}>Suivant</button>
       </div>
 
-      {/* ⬇️ Remplace la liste par ton carrousel */}
       <CharacterCarousel
         characters={characters}
         onToggleFavorite={toggleFavorite}

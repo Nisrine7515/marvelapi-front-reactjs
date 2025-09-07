@@ -13,7 +13,7 @@ const API_URL = "http://localhost:3000";
 export default function CharacterComicsPage() {
   const { id } = useParams();
   const [comics, setComics] = useState([]);
-  const [character, setCharacter] = useState(null); // <-- pour afficher le perso
+  const [character, setCharacter] = useState(null);
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState(null);
   const [raw, setRaw] = useState(null);
@@ -35,7 +35,7 @@ export default function CharacterComicsPage() {
 
         setRaw(res.data);
 
-        // 🟢 L’API te renvoie un objet avec { thumbnail, ... , comics: [ ... ] }
+        //  L’API te renvoie un objet avec { thumbnail, ... , comics: [ ... ] }
         // => on récupère le tableau dans `comics` et on garde le reste comme "character"
         const { comics: comicsArr, ...charInfo } = res.data ?? {};
         if (!Array.isArray(comicsArr)) {
@@ -110,10 +110,13 @@ export default function CharacterComicsPage() {
           )}
           <div>
             {character.name && <h2 style={{ margin: 0 }}>{character.name}</h2>}
+
+            {/* Si le personnage a une description, on l’affiche dans un <p> */}
             {character.description && <p>{character.description}</p>}
           </div>
         </section>
       )}
+      {/*si aucun comic n’a été trouvé */}
 
       {comics.length === 0 ? (
         <>
@@ -126,6 +129,7 @@ export default function CharacterComicsPage() {
           </details>
         </>
       ) : (
+        /* Sinon (s’il y a bien des comics à afficher) */
         <ul className="comics">
           {comics.map((cm) => (
             <li key={cm._id} className="card">

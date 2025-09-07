@@ -18,15 +18,18 @@ function FavoritesPage() {
   return (
     <main>
       <h1>Mes favoris</h1>
+      {/* Si le tableau "items" est vide, on affiche un message indiquant qu'il n'y a pas encore de favoris */}
       {items.length === 0 && <p>Aucun favori pour le moment.</p>}
 
       <ul className="favorites">
         {items.map((it) => (
           <li key={`${it.type}-${it._id}`} className="card">
             <h3>{it.type === "character" ? it.name : it.title}</h3>
+            {/* // Si une image (thumbnail) existe, on l'affiche */}
             {it.thumbnail && (
               <img src={imgUrl(it.thumbnail)} alt={it.name || it.title} />
             )}
+            {/* Affiche la description si elle existe, sinon affiche "Pas de description" */}
             <p>{it.description || "Pas de description"}</p>
             <button onClick={() => removeFavorite(it)}>
               Retirer des favoris

@@ -12,7 +12,7 @@ export default function ComicsPage() {
   const [page, setPage] = useState(1);
   const [title, setTitle] = useState("");
   const [count, setCount] = useState(0);
-  const limit = 20; // libre, tu peux passer à 100 aussi
+  const limit = 20;
 
   const totalPages = Math.max(1, Math.ceil(count / limit));
   const { toggleFavorite, isFavorite } = useFavorites();

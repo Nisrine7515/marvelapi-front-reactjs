@@ -67,7 +67,8 @@ function LogIn() {
             {showPwd ? "Masquer" : "Afficher"}
           </button>
         </div>
-        {error && <p style={{ color: "#ff6b6b" }}>{error}</p>}
+        {error && <p className="error-message">{error}</p>}
+
         <button type="submit" disabled={loading}>
           {loading ? "Connexion…" : "Se connecter"}
         </button>

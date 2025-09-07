@@ -2,14 +2,12 @@ import { useMemo, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { imgUrl } from "../utils/img.js";
 
-/** Découpe un tableau en paquets de size */
 function chunk(arr, size) {
   const out = [];
   for (let i = 0; i < arr.length; i += size) out.push(arr.slice(i, i + size));
   return out;
 }
 
-/** Carrousel affichant 10 personnages par “slide” */
 function CharacterCarousel({ characters = [], onToggleFavorite, isFavorite }) {
   const [index, setIndex] = useState(0);
   const navigate = useNavigate();
@@ -55,6 +53,7 @@ function CharacterCarousel({ characters = [], onToggleFavorite, isFavorite }) {
                   role="button"
                   tabIndex={0}
                   onKeyDown={(e) => {
+                    // Si l'utilisateur appuie sur Entrée ou Espace
                     if (e.key === "Enter" || e.key === " ") {
                       e.preventDefault();
                       goToComics(c._id);
@@ -65,6 +64,7 @@ function CharacterCarousel({ characters = [], onToggleFavorite, isFavorite }) {
                     {c.thumbnail ? (
                       <img src={imgUrl(c.thumbnail)} alt={c.name} />
                     ) : (
+                      // aria-hidden = ignoré par les lecteurs d’écran
                       <div className="thumb-placeholder" aria-hidden="true">
                         ?
                       </div>

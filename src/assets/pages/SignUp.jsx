@@ -66,19 +66,22 @@ function SignUp() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            // Indique au navigateur de proposer un nouveau mot de passe (utile pour sign up)
             autoComplete="new-password"
             style={{ flex: 1 }}
           />
           <button
             type="button"
             className="secondary"
+            // Quand on clique : inverse la valeur de showPwd (true ↔ false)
             onClick={() => setShowPwd((s) => !s)}
             aria-label="Afficher le mot de passe"
           >
             {showPwd ? "Masquer" : "Afficher"}
           </button>
         </div>
-        {error && <p style={{ color: "#ff6b6b" }}>{error}</p>}
+        {error && <p className="error-message">{error}</p>}
+
         <button type="submit" disabled={loading}>
           {loading ? "Création…" : "Créer mon compte"}
         </button>
