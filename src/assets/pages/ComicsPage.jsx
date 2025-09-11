@@ -5,7 +5,7 @@ import SearchBar from "../components/SearchBar.jsx";
 import { useFavorites } from "../utils/useFavorites.js";
 import { imgUrl } from "../utils/img.js";
 
-const API_URL = "http://localhost:3000";
+const API_URL = "https://site--marvelapi-backend--kl29qvxz67pd.code.run";
 
 export default function ComicsPage() {
   const [comics, setComics] = useState([]);

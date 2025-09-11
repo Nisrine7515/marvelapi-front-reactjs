@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 
-const API_URL = "http://localhost:3000";
+const API_URL = "https://site--marvelapi-backend--kl29qvxz67pd.code.run";
 const AUTH_TOKEN_KEY = "auth_token";
 const AUTH_USER_KEY = "auth_user";
 

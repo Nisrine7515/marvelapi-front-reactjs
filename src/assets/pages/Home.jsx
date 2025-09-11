@@ -5,7 +5,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { useFavorites } from "../utils/useFavorites.js";
 import CharacterCarousel from "../components/CharacterCarousel.jsx";
 
-const API_URL = "http://localhost:3000";
+const API_URL = "https://site--marvelapi-backend--kl29qvxz67pd.code.run";
 
 const Home = () => {
   const [characters, setCharacters] = useState([]);
